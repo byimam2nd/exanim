@@ -1,7 +1,8 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import node from "@astrojs/node";
+// import node from "@astrojs/node";
+import vercel from "@astrojs/vercel/serverless"; // atau /edge kalau mau Edge Functions
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,10 +16,10 @@ export default defineConfig({
   },
 
   output: "server",
-
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: vercel(), // ganti ke vercel adapter
+  // adapter: node({
+  //  mode: "standalone",
+  // }),
 
   integrations: [tailwind()],
 
